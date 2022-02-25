@@ -5,7 +5,12 @@ const port = 3020
 
 app.use(express.json())
 
+app.get('/', async (req, res) => {
+    res.send('OK')
+})
+
 app.post('/queue', async (req, res) => {
+    console.log('NOVA MENSAGEM RECEBIDA NA FILA')
     const myQueue = new Queue(req.body.bot, {
         connection: {
             host: "0.0.0.0",
