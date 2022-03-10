@@ -43,6 +43,7 @@ app.post('/queue', async (req, res) => {
     console.log('NOVA MENSAGEM RECEBIDA NA FILA')
     const myQueue = new Queue(req.body.bot, opts);
     await myQueue.add(req.body.method, { delay: req.body.delay, data: req.body.data });
+    await myQueue.close()
     res.send(req.body)
 })
 
